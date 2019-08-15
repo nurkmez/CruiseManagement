@@ -30,10 +30,6 @@ namespace CruiseManagement.API.Controllers
         {
             var cruises = await _cruiseManagementRepository.GetCruises();
 
-            // var mapper = (IMapper)HttpContext.RequestServices.GetService(typeof(IMapper));
-
-            // var cruisesOutput = mapper.Map<IEnumerable<CruiseManagement.API.Dtos.Cruise>>(cruises);
-
             return Ok(cruises);
         }
 
@@ -42,11 +38,12 @@ namespace CruiseManagement.API.Controllers
         [Route("{id}", Name = "GetCruise")]
         public async Task<IActionResult> GetCruise(int id)
         {
-            var cruiseEntity = await _cruiseManagementRepository.GetCruise(id);
+            var cruiseEntity = await _cruiseManagementRepository.GetCruise(id, false);
             if (cruiseEntity == null)
             {
                 return NotFound();
             }
+           // return Ok(cruiseEntity);
 
             var cruiseRoutes = await _cruiseManagementRepository.GetRoutes(id);
 
@@ -61,9 +58,7 @@ namespace CruiseManagement.API.Controllers
                 _cruiseManagementRepository.AddCruise(cruiseEntity);
                 await _cruiseManagementRepository.SaveAsync();
 
-                return CreatedAtRoute("GetCruise",
-                    new { id = cruiseEntity.Id },
-                    cruiseEntity);
+            return CreatedAtRoute("GetCruise", new { id = cruiseEntity.Id }, cruiseEntity);
 
         }
 

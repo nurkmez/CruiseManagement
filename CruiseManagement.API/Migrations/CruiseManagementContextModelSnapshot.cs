@@ -47,7 +47,7 @@ namespace CruiseManagement.API.Migrations
 
                     b.Property<int?>("CruiseLineId");
 
-                    b.Property<DateTime>("DepartureDate");
+                    b.Property<DateTimeOffset>("DepartureDate");
 
                     b.Property<bool>("FlightIncluded");
 

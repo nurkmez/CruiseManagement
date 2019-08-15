@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CruiseManagement.API.Migrations
 {
     [DbContext(typeof(CruiseManagementContext))]
-    [Migration("20190814231005_InitialDB")]
+    [Migration("20190815175357_InitialDB")]
     partial class InitialDB
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -49,7 +49,7 @@ namespace CruiseManagement.API.Migrations
 
                     b.Property<int?>("CruiseLineId");
 
-                    b.Property<DateTime>("DepartureDate");
+                    b.Property<DateTimeOffset>("DepartureDate");
 
                     b.Property<bool>("FlightIncluded");
 

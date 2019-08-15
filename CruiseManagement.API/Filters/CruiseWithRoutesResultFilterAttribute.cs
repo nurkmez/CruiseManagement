@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace CruiseManagement.API.Filters
 {
-    public class CruiseWithRoutesResultFilterAttribute: ResultFilterAttribute
+    public class CruiseWithRoutesResultFilterAttribute : ResultFilterAttribute
     {
         public override async Task OnResultExecutionAsync(
            ResultExecutingContext context,
@@ -25,14 +25,16 @@ namespace CruiseManagement.API.Filters
                 return;
             }
 
-            var (cruise, cruiseRuotes) = ((Entities.Cruise,
-                IEnumerable<Dtos.Route>))resultFromAction.Value;
+            var (cruise, cruiseRoutes) = ((Entities.Cruise,
+                IEnumerable<Entities.Route>))resultFromAction.Value;
 
             var mapper = (IMapper)context.HttpContext.RequestServices.GetService(typeof(IMapper));
 
-            var mappedCruise = mapper.Map<CruiseWithRoutes>(cruise);
+            var mappedCruise = mapper.Map<Dtos.CruiseWithRoutes>(cruise);
+            var mappedRoutes = mapper.Map<IEnumerable<Dtos.Route>>(cruiseRoutes);
 
-            resultFromAction.Value = mapper.Map(cruiseRuotes, mappedCruise);
+
+            resultFromAction.Value = mapper.Map(mappedRoutes, mappedCruise);
 
             await next();
         }

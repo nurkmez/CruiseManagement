@@ -34,7 +34,7 @@ namespace CruiseManagement.API.Entities
 
         public virtual ICollection<Route> Routes { get; set; }
         [Required]
-        public DateTime DepartureDate { get; set; }
+        public DateTimeOffset DepartureDate { get; set; }
         public bool FlightIncluded { get; set; }
 
     }

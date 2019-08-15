@@ -20,13 +20,13 @@ namespace CruiseManagement.API.Dtos
         public virtual string Title { get; set; }
 
         [Required(AllowEmptyStrings = false, ErrorMessage = "required|Depature date is required.")]
-        public DateTimeOffset DepatureDate { get; set; }
+        public DateTimeOffset DepartureDate { get; set; }
 
         public virtual bool FlightIncluded { get; set; }
 
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
-            if (!(DepatureDate < DateTime.Now))
+            if (!(DepartureDate < DateTime.Now))
             {
                 yield return new ValidationResult(
                 "departureDateBeforeNow|The departure date should be later than now.",

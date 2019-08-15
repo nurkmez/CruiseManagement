@@ -4,6 +4,8 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using System;
+using System.Threading;
 
 namespace CruiseManagement.API
 {
@@ -11,10 +13,8 @@ namespace CruiseManagement.API
     {
         public static void Main(string[] args)
         {
-  
+            ThreadPool.SetMaxThreads(Environment.ProcessorCount, Environment.ProcessorCount);
             var host = BuildWebHost(args);
-
-            // migrate & seed the database.  Best practice = in Main, using service scope
             using (var scope = host.Services.CreateScope())
             {
                 try
@@ -30,7 +30,6 @@ namespace CruiseManagement.API
                 }
             }
 
-            // run the web app
             host.Run();
 
         }

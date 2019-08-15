@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using CruiseManagement.API.Entities;
+using System.Collections.Generic;
 
 namespace CruiseManagement.API
 {
@@ -10,11 +11,18 @@ namespace CruiseManagement.API
             CreateMap<Entities.Cruise, Dtos.Cruise>();
             CreateMap<Entities.CruiseLine, Dtos.CruiseLine>();
             CreateMap<Entities.Ship, Dtos.Ship>();
+            CreateMap<Entities.Route, Dtos.Route>();
             CreateMap<Entities.CabinType, Dtos.CabinType>();
+            CreateMap<Dtos.CruiseWithRoutes, Entities.Cruise>();
             CreateMap<Dtos.CruiseForCreation, Entities.Cruise>();
             CreateMap<Dtos.RouteForCreation, Entities.Route>();
             CreateMap<Dtos.CruiseWithRoutesForCreation, Entities.Cruise>();
-            
+
+            CreateMap<Entities.Cruise, Dtos.CruiseWithRoutes>();
+     
+
+            CreateMap<IEnumerable<Dtos.Route>, Dtos.CruiseWithRoutes>()
+                .ForMember(dest => dest.Routes, opt => opt.MapFrom(src => src));
 
 
             //  CreateMap<IEnumerable< Dtos.CruiseLine>, IEnumerable<Entities.CruiseLine>>();

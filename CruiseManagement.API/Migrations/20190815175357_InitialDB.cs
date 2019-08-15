@@ -82,7 +82,7 @@ namespace CruiseManagement.API.Migrations
                     CruiseLineId = table.Column<int>(nullable: true),
                     ShipId = table.Column<int>(nullable: true),
                     CabinTypeId = table.Column<int>(nullable: true),
-                    DepartureDate = table.Column<DateTime>(nullable: false),
+                    DepartureDate = table.Column<DateTimeOffset>(nullable: false),
                     FlightIncluded = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
