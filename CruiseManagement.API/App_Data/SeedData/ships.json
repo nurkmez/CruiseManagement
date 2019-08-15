@@ -1,0 +1,156 @@
+[
+    {
+      "ship_id": 119075,
+      "company_id": 119055,
+      "title": "MSC Fantasia",
+      "cabinTypes": [
+        {
+          "nid": 119375,
+          "title": "Balcony Cabin: Fantastica B2"
+        },
+        {
+          "nid": 119395,
+          "title": "Suite: Aurea S3"
+        },
+        {
+          "nid": 843466,
+          "title": "Suite: Aurea SP3"
+        }
+      ]
+    },
+    {
+      "ship_id": 119463,
+      "company_id": 119055,
+      "title": "MSC Splendida",
+      "cabinTypes": [
+        {
+          "nid": 119538,
+          "title": "Suite: Executive and Family YC2"
+        },
+        {
+          "nid": 119542,
+          "title": "Balcony Cabin: Aurea B3"
+        }
+      ]
+    },
+    {
+      "ship_id": 119672,
+      "company_id": 119055,
+      "title": "MSC Orchestra",
+      "cabinTypes": [
+        
+      ]
+    },
+    {
+      "ship_id": 131252,
+      "company_id": 131168,
+      "title": "Celebrity Solstice",
+      "cabinTypes": [
+        {
+          "nid": 131350,
+          "title": "Balcony Cabin: AquaClass A2"
+        },
+        {
+          "nid": 131366,
+          "title": "Suite: Penthouse Suite PS"
+        },
+        {
+          "nid": 337096,
+          "title": "Balcony Cabin: Guarantee AquaClass XA"
+        },
+        {
+          "nid": 131349,
+          "title": "Balcony Cabin: AquaClass A1"
+        },
+        {
+          "nid": 131368,
+          "title": "Suite: Sky Suite S2"
+        }
+      ]
+    },
+    {
+      "ship_id": 131388,
+      "company_id": 131168,
+      "title": "Celebrity Eclipse",
+      "cabinTypes": [
+        {
+          "nid": 131496,
+          "title": "Guarantee Cabin: Suite W"
+        },
+        {
+          "nid": 131497,
+          "title": "Guarantee Cabin: Balcony X"
+        }
+      ]
+    },
+    {
+      "ship_id": 94643,
+      "company_id": 93195,
+      "title": "Vision of the Seas",
+      "cabinTypes": [
+        {
+          "nid": 623200,
+          "title": "Suite: Guarantee WS"
+        },
+        {
+          "nid": 97584,
+          "title": "Suite: Owner's OS"
+        },
+        {
+          "nid": 623188,
+          "title": "Suite: VO"
+        },
+        {
+          "nid": 623192,
+          "title": "Suite: Junior J3"
+        },
+        {
+          "nid": 623196,
+          "title": "Suite: Grand GT"
+        },
+        {
+          "nid": 97581,
+          "title": "Suite: Grand GS"
+        },
+        {
+          "nid": 623193,
+          "title": "Suite: Junior J4"
+        },
+        {
+          "nid": 97586,
+          "title": "Suite: Royal RS"
+        }
+      ]
+    },
+    {
+      "ship_id": 94652,
+      "company_id": 93195,
+      "title": "Voyager of the Seas",
+      "cabinTypes": [
+        {
+          "nid": 97624,
+          "title": "Suite: Owner's Suite OS"
+        },
+        {
+          "nid": 650949,
+          "title": "Suite: Junior J4"
+        },
+        {
+          "nid": 650951,
+          "title": "Suite: Guarantee WS"
+        },
+        {
+          "nid": 97622,
+          "title": "Suite: Grand Suite GS"
+        },
+        {
+          "nid": 650948,
+          "title": "Suite: Junior J3"
+        },
+        {
+          "nid": 97626,
+          "title": "Suite: Royal Suite RS"
+        }
+      ]
+    }
+  ]
