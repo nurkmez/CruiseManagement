@@ -25,24 +25,56 @@ namespace CruiseManagement.API.Services
             _context.Cruises.AddAsync(cruise);
         }
 
-        public async Task AddRoute(int CruiseId, Route Route)
+        public void UpdateCruise(Cruise cruise)
         {
-            var cruise = await GetCruise(CruiseId);
             if (cruise == null)
             {
-                throw new Exception($"Cannot add route to cruise with id {CruiseId}: cruise not found.");
+                throw new ArgumentNullException(nameof(cruise));
             }
-            cruise.Routes.Add(Route);
+            _context.Entry<Cruise>(cruise).State = EntityState.Modified;
+
+            _context.Cruises.Update(cruise);
         }
+
+        public void AddRoute(Route route)
+        {
+            var cruise = GetCruise(route.CruiseId);
+            if (cruise == null)
+            {
+                throw new Exception($"Cannot add route to cruise with id {route.CruiseId}: cruise not found.");
+            }
+            _context.Entry<Route>(route).State = EntityState.Added;
+            _context.Routes.Add(route);
+        }
+
+        public void UpdateRoute(Route route)
+        {
+            var cruise = GetCruise(route.CruiseId);
+            if (cruise == null)
+            {
+                throw new Exception($"Cannot update route to cruise with id {route.CruiseId}: cruise not found.");
+            }
+            _context.Entry<Route>(route).State = EntityState.Modified;
+            _context.Routes.Update(route);
+        }
+
 
         public async Task<bool> CruiseExists(int CruiseId)
         {
             return await _context.Cruises.AnyAsync(t => t.Id == CruiseId);
         }
 
-        public async Task DeleteCruise(Cruise cruise)
+        public void DeleteCruise(int Id)
         {
-            _context.Cruises.Remove(cruise);
+
+            var deletedCruise = _context.Cruises.Where(s => s.Id == Id).First();
+
+            if (deletedCruise != null)
+            {
+                _context.Entry(deletedCruise).State = EntityState.Deleted;
+                _context.Cruises.Remove(deletedCruise);
+            }
+
         }
 
         public void Dispose()
@@ -109,9 +141,14 @@ namespace CruiseManagement.API.Services
             return await _context.Ports.ToListAsync();
         }
 
+        public async Task<Port> GetPort(int PortId)
+        {
+            return await _context.Ports.Where(s => s.Id == PortId).FirstOrDefaultAsync();
+        }
+
         public async Task<IEnumerable<Route>> GetRoutes(int CruiseId)
         {
-            return await _context.Routes.Where(s => s.CruiseId == CruiseId).ToListAsync();
+            return await _context.Routes.Include(p=>p.Port).Where(s => s.CruiseId == CruiseId).ToListAsync();
         }
 
         public async Task<IEnumerable<Route>> GetRoutes(int CruiseId, IEnumerable<int> RouteIds)
@@ -131,10 +168,6 @@ namespace CruiseManagement.API.Services
             return (await _context.SaveChangesAsync() >= 0);
         }
 
-        public Task UpdateCruise(Cruise Cruise)
-        {
-            throw new NotImplementedException();
-        }
 
         public async Task<IEnumerable<Ship>> GetShips()
         {
@@ -159,6 +192,16 @@ namespace CruiseManagement.API.Services
         public async Task<CruiseLine> GetCruiseLine(int CruiseLineId)
         {
             return await _context.CruiseLines.Where(s => s.Id == CruiseLineId).FirstOrDefaultAsync();
+        }
+
+        public void DeleteRoute(int routeId)
+        {
+            var deletedRoute = _context.Routes.Where(s => s.Id == routeId).First();
+            if (deletedRoute != null)
+            {
+                _context.Entry(deletedRoute).State = EntityState.Deleted;
+                _context.Routes.Remove(deletedRoute);
+            }
         }
     }
 }

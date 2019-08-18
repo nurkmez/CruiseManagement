@@ -26,7 +26,7 @@ namespace CruiseManagement.API.Dtos
 
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
-            if (!(DepartureDate < DateTime.Now))
+            if (!(DepartureDate > DateTime.Now))
             {
                 yield return new ValidationResult(
                 "departureDateBeforeNow|The departure date should be later than now.",

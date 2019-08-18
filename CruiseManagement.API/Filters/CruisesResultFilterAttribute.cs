@@ -26,7 +26,7 @@ namespace CruiseManagement.API
 
 
             var mapper = (IMapper)context.HttpContext.RequestServices.GetService(typeof(IMapper));
-            resultFromAction.Value = mapper.Map<IEnumerable<Dtos.Cruise>>(resultFromAction.Value);
+            resultFromAction.Value = mapper.Map<IEnumerable<Dtos.CruiseForList>>(resultFromAction.Value);
 
             await next();
         }

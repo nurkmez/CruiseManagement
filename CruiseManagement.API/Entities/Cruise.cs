@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CruiseManagement.API.Entities
 {
-    public class Cruise
+    public class Cruise 
     {
 
 

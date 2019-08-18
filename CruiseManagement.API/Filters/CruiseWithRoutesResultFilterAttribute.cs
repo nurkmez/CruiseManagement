@@ -31,7 +31,7 @@ namespace CruiseManagement.API.Filters
             var mapper = (IMapper)context.HttpContext.RequestServices.GetService(typeof(IMapper));
 
             var mappedCruise = mapper.Map<Dtos.CruiseWithRoutes>(cruise);
-            var mappedRoutes = mapper.Map<IEnumerable<Dtos.Route>>(cruiseRoutes);
+            var mappedRoutes = mapper.Map<IEnumerable<Dtos.RouteForList>>(cruiseRoutes);
 
 
             resultFromAction.Value = mapper.Map(mappedRoutes, mappedCruise);

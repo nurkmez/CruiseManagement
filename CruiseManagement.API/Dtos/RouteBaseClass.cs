@@ -9,8 +9,8 @@ namespace CruiseManagement.API.Dtos
     {
         public int Days { get; set; }
         public int PortId { get; set; }
-
-     //   public string CruiseId { get; set; }
+        //public string PortName { get; set; }
+        //   public string CruiseId { get; set; }
     }
 
 }

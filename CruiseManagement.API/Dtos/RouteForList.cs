@@ -5,8 +5,8 @@ using System.Threading.Tasks;
 
 namespace CruiseManagement.API.Dtos
 {
-    public class Cruise : CruiseAbstractBase
+    public class RouteForList: Route
     {
-        public int Id { get; set; }
+        public string PortName { get; set; }
     }
 }

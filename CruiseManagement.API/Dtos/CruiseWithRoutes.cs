@@ -4,7 +4,7 @@ namespace CruiseManagement.API.Dtos
 {
     public class CruiseWithRoutes : Cruise
     {
-        public IEnumerable<Route> Routes { get; set; } = new List<Route>();
+        public IList<Route> Routes { get; set; } = new List<Route>();
 
     }
 }

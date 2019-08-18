@@ -8,15 +8,18 @@ namespace CruiseManagement.API.Services
     public interface ICruiseManagementRepository
     {
         void AddCruise(Cruise cruise);
-        Task DeleteCruise(Cruise cruise);
+        void DeleteCruise(int Id);
         Task<Cruise> GetCruise(int CruiseId, bool includeRoutes = false);
         Task<IEnumerable<Cruise>> GetCruises(bool includeRoutes = false);
         Task<bool> SaveAsync();
         Task<bool> CruiseExists(int CruiseId);
-        Task UpdateCruise(Cruise Cruise);
+        void UpdateCruise(Cruise Cruise);
+        void DeleteRoute(int routeId);
+
         Task<IEnumerable<Route>> GetRoutes(int CruiseId);
         Task<IEnumerable<Route>> GetRoutes(int CruiseId, IEnumerable<int> RouteIds);
-        Task AddRoute(int CruiseId, Route Route);
+        void AddRoute(Route Route);
+        void UpdateRoute(Route Route);
         Task<IEnumerable<CruiseLine>> GetCruiseLines();
         Task<IEnumerable<Ship>> GetShips(int CruiseLineId);
         Task<IEnumerable<Ship>> GetShips();
@@ -24,7 +27,7 @@ namespace CruiseManagement.API.Services
         Task<CabinType> GetCabinType(int CabinTypeId);
         Task<Ship> GetShip(int ShipId);
         Task<CruiseLine> GetCruiseLine(int CruiseLineId);
-
+        Task<Port> GetPort(int PortId);
         Task<IEnumerable<CabinType>> GetCabinTypes();
 
         Task<IEnumerable<Port>> GetPorts();
